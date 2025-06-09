@@ -28,6 +28,11 @@ const ComingSoon = () => {
              });
              return;
          }
+         addToast('Subscription successful!', {
+             type: 'success',
+             duration: 5000,
+             position: 'top-center'
+         });
        } catch (error) {
          console.error('Error subscribing:', error);
          setError('Failed to subscribe. Please try again later.');
