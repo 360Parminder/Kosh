@@ -41,6 +41,9 @@ app.use(xss());
 // Prevent parameter pollution
 app.use(hpp());
 
+app.get('/status', (req, res) => {
+    res.send('Hello from the API!');
+});
 
 // Routes
 app.use('/api/v1/users', userRoutes);

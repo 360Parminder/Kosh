@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
 const ComingSoon = () => {
     const [email, setEmail] = useState('');
@@ -12,11 +13,21 @@ const ComingSoon = () => {
             setError('Please enter a valid email');
             return;
         }
-        const response = await axios.post('/notifications/subscribe', { email });
+        const response = await axios.post('/api/v1/notifications/subscribe', { email });
+        console.log('response', response);
+        
+        if (response.status !== 200) {
+            setError('Failed to subscribe. Please try again later.');
+            return;
+        }
+        // If successful, clear the error and reset the form
+        setError('');
+        console.log('Subscription successful:', response.data);
+     
+        
 
         setIsSubmitted(true);
         setError('');
-        setEmail('');
 
         setTimeout(() => setIsSubmitted(false), 3000);
     };
