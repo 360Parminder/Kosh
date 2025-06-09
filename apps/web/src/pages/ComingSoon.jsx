@@ -8,6 +8,7 @@ const ComingSoon = () => {
     const [email, setEmail] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -17,6 +18,7 @@ const ComingSoon = () => {
         }
 
        try {
+         setIsLoading(true);
          const response = await axios.post('https://kosh-35xu.onrender.com/api/v1/notifications/subscribe', { email });
          if (response.status !== 200) {
              console.log('Error subscribing:', response.data);
@@ -26,6 +28,8 @@ const ComingSoon = () => {
                  duration: 5000,
                  position: 'top-center'
              });
+                setIsSubmitted(false);
+                setIsLoading(false);
              return;
          }
          addToast('Subscription successful!', {
@@ -33,6 +37,9 @@ const ComingSoon = () => {
              duration: 5000,
              position: 'top-center'
          });
+            setIsSubmitted(true);
+            setEmail('');
+            setIsLoading(false);
        } catch (error) {
          console.error('Error subscribing:', error);
          setError('Failed to subscribe. Please try again later.');
@@ -42,6 +49,7 @@ const ComingSoon = () => {
              position: 'top-center'
          });
          setIsSubmitted(false);
+         setIsLoading(false);   
          return;
        }
         setTimeout(() => setIsSubmitted(false), 3000);
@@ -154,10 +162,11 @@ const ComingSoon = () => {
                                 className={`flex-grow p-3 rounded-lg bg-gray-900/80 text-white ${error ? 'border-red-500' : 'border-indigo-700'}`}
                             />
                             <button
+                                disabled={isLoading}
                                 type="submit"
                                 className="bg-gray-900 hover:bg-gray-800 text-white py-3 px-6 rounded-lg font-semibold transition-colors"
                             >
-                                Notify Me
+                                { isLoading ? 'Submitting...' : 'Notify Me'}
                             </button>
                         </div>
                         {error && <p className="text-red-400 mt-2">{error}</p>}
