@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { useToast } from '../hooks/useToast';
 
 const ComingSoon = () => {
+    const { addToast } = useToast();
     const [email, setEmail] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [error, setError] = useState('');
@@ -13,23 +15,32 @@ const ComingSoon = () => {
             setError('Please enter a valid email');
             return;
         }
-        const response = await axios.post('https://kosh-35xu.onrender.com/api/v1/notifications/subscribe', { email });
-        
-        if (response.status !== 200) {
-            setError('Failed to subscribe. Please try again later.');
-            return;
-        }
-        
-        // If successful, clear the error and reset the form
-        setError('');
-        console.log('Subscription successful:', response.data);
-     
-        
 
-        setIsSubmitted(true);
-        setError('');
-
+       try {
+         const response = await axios.post('https://kosh-35xu.onrender.com/api/v1/notifications/subscribe', { email });
+         if (response.status !== 200) {
+             console.log('Error subscribing:', response.data);
+             
+             addToast(response.data.message || 'Failed to subscribe. Please try again later.', {
+                 type: 'error',
+                 duration: 5000,
+                 position: 'top-center'
+             });
+             return;
+         }
+       } catch (error) {
+         console.error('Error subscribing:', error);
+         setError('Failed to subscribe. Please try again later.');
+         addToast(error.response?.data?.message || 'Failed to subscribe. Please try again later.', {
+             type: 'error',
+             duration: 5000,
+             position: 'top-center'
+         });
+         setIsSubmitted(false);
+         return;
+       }
         setTimeout(() => setIsSubmitted(false), 3000);
+        setError('');
     };
 
     return (
@@ -81,7 +92,7 @@ const ComingSoon = () => {
                     </motion.h1>
 
                     {/* Features Grid */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.3 }}

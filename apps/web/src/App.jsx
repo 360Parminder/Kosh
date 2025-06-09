@@ -1,10 +1,8 @@
+import ComingSoon from "./pages/ComingSoon";
 
 const App = () => {
   return (
-    <div className="App">
-      <h1>Welcome to the Web App</h1>
-      <p>This is a simple React application.</p>
-    </div>
+    <ComingSoon />
   );
 }
 
