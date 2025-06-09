@@ -6,12 +6,13 @@ const ComingSoon = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [error, setError] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!email.trim() || !/^\S+@\S+\.\S+$/.test(email)) {
             setError('Please enter a valid email');
             return;
         }
+        const response = await axios.post('/notifications/subscribe', { email });
 
         setIsSubmitted(true);
         setError('');
