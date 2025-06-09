@@ -13,13 +13,13 @@ const ComingSoon = () => {
             setError('Please enter a valid email');
             return;
         }
-        const response = await axios.post('/api/v1/notifications/subscribe', { email });
-        console.log('response', response);
+        const response = await axios.post('https://kosh-35xu.onrender.com/api/v1/notifications/subscribe', { email });
         
         if (response.status !== 200) {
             setError('Failed to subscribe. Please try again later.');
             return;
         }
+        
         // If successful, clear the error and reset the form
         setError('');
         console.log('Subscription successful:', response.data);
