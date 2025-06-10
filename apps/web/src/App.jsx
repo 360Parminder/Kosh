@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import LoginForm from "./components/auth/Loginform";
+import LoginForm from "./components/auth/LoginForm";
 import ComingSoon from "./pages/ComingSoon";
 import SignupForm from "./components/auth/SignupForm";
 
