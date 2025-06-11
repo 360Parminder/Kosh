@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Twitter, Github, Linkedin, Mail } from 'lucide-react';
+import { color, motion } from 'framer-motion';
+import { Twitter, Github, Linkedin, Mail,X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -15,7 +15,7 @@ const Footer = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.5 }}
-            className={`py-8 px-4 md:px-8 mt-12 dark:bg-gray-900 dark:text-gray-200 bg-gray-100 text-gray-800`}
+            className={`py-8 px-4 md:px-8 mt-12 dark:bg-black dark:text-white bg-gray-100 text-gray-800`}
         >
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -63,11 +63,11 @@ const Footer = () => {
                         </motion.h3>
                         <div className="flex space-x-4">
                             {[
-                                { Icon: Twitter, href: "https://x.com/360parminder" },
-                                { Icon: Github, href: "https://github.com/360parminder" },
-                                { Icon: Linkedin, href: "https://linkedin.com/in/360parminder" },
-                                { Icon: Mail, href: "mailto:360.parminder@gmail.com" }
-                            ].map(({ Icon, href }, index) => (
+                                { Icon: Twitter, href: "https://x.com/360parminder",color: "#1DA1F2" },
+                                { Icon: Github, href: "https://github.com/360parminder", color: "#333" },
+                                { Icon: Linkedin, href: "https://linkedin.com/in/360parminder", color: "#0077B5" },
+                                { Icon: Mail, href: "mailto:360.parminder@gmail.com", color: "#EA4335" }
+                            ].map(({ Icon, href, color }, index) => (
                                 <motion.a 
                                     key={index}
                                     href={href}
@@ -77,7 +77,7 @@ const Footer = () => {
                                     rel="noopener noreferrer"
                                     className="text-gray-300 hover:text-white dark:text-gray-600 dark:hover:text-gray-900 text-xl"
                                 >
-                                    <Icon size={20} />
+                                    <Icon size={20} color={color} />
                                 </motion.a>
                             ))}
                         </div>

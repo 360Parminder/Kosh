@@ -15,8 +15,8 @@ const App = () => {
       <Route path="/" element={<RootLayout />} >
         <Route index element={<Home />} />
       </Route>
-      <Route path="/Login" element={<LoginForm />} />
-      <Route path="/SignUp" element={<SignupForm />} />
+      <Route path="/login" element={<LoginForm />} />
+      <Route path="/signup" element={<SignupForm />} />
       {/* Add more routes as needed */}
     </Routes>
     

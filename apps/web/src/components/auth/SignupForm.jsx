@@ -163,6 +163,9 @@ const SignupForm = () => {
       setIsLoading(false);
     }
   };
+  console.log(formData);
+  
+  
 
   return (
     <div className="bg-black text-white min-h-screen overflow-hidden relative">
@@ -186,7 +189,7 @@ const SignupForm = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Logo/Header */}
-          <div className="text-center mb-10">
+          {/* <div className="text-center mb-10">
             <motion.div
               className="mx-auto w-20 h-20 rounded-full bg-indigo-900/50 flex items-center justify-center mb-4 border border-indigo-700/50"
               initial={{ scale: 0 }}
@@ -197,7 +200,7 @@ const SignupForm = () => {
             </motion.div>
             <h1 className="text-3xl font-bold tracking-wide text-indigo-300 mb-2">CREATE ACCOUNT</h1>
             <p className="text-gray-400">Join Kosh to manage your subscriptions</p>
-          </div>
+          </div> */}
 
           {/* Signup Form */}
           <motion.div 
