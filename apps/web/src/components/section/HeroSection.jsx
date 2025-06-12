@@ -1,6 +1,10 @@
 import { Link }  from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowDown, ArrowRight } from 'lucide-react';
+import Spotify from '/src/assets/Spotify.png';
+import Netflix from '/src/assets/Netflix.png';
+import Drive from '/src/assets/Drive.png';
+import Mastercard from '/src/assets/Mastercard.png';
 
 
 const HeroSection = () => {
@@ -73,19 +77,19 @@ const HeroSection = () => {
                             Stay on top of your finances with smart reminders for upcoming bills.
                         </p>
                         <div className="mt-4 p-3 rounded-md text-sm border border-white/20 bg-white/10 flex items-center justify-between gap-2">
-                            <img className='w-6 h-6' src="/src/assets/Drive.png" alt="Google Drive" />
+                            <img className='w-6 h-6' src={Drive} alt="Google Drive" />
                             <span className="text-sm">Drive</span>
                             <p className="text-white/50 text-sm">$19</p>
                             <p className="text-white/50 text-sm">15th June</p>
                         </div>
                         <div className="mt-2 p-3 rounded-md text-sm border border-white/20 bg-white/10 flex items-center justify-between gap-2">
-                            <img className='w-6 h-6' src="/src/assets/Netflix.png" alt="Netflix" />
+                            <img className='w-6 h-6' src={Netflix} alt="Netflix" />
                             <span className="text-sm">Netflix</span>
                             <p className="text-white/50 text-sm">$7.99</p>
                             <p className="text-white/50 text-sm">19th June</p>
                         </div>
                         <div className="mt-2 p-3 rounded-md text-sm border border-white/20 bg-white/10 flex items-center justify-between gap-2">
-                            <img className='w-6 h-6' src="/src/assets/Spotify.png" alt="Spotify" />
+                            <img className='w-6 h-6' src={Spotify} alt="Spotify" />
                             <span className="text-sm">Spotify</span>
                             <p className="text-white/50 text-sm">$11.99</p>
                             <p className="text-white/50 text-sm">30th June</p>
@@ -97,7 +101,7 @@ const HeroSection = () => {
                         style={{ transform: 'rotateY(10deg)', transformStyle: 'preserve-3d' }}
                     >
                         <div className='flex items-center justify-between gap-2 mb-2'>
-                            <img className='w-8 h-8' src="/src/assets/Mastercard.png" alt="MasterCard" />
+                            <img className='w-8 h-8' src={Mastercard} alt="MasterCard" />
                             <span className='p-1 px-1.5 rounded-2xl text-sm border border-white/60'>Show Balance</span>
                         </div>
                         <div className='flex flex-col text-left'>
