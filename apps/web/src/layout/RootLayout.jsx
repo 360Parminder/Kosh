@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const RootLayout = () => {
     return (
-        <div className=" dark:bg-black bg-gray-100 ">
+        <div className=" dark:bg-black bg-gray-200 ">
             <Navbar />
             {/* Background glow */}
             {/* <motion.div

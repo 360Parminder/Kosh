@@ -9,7 +9,7 @@ import Mastercard from '/src/assets/Mastercard.png';
 
 const HeroSection = () => {
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden flex flex-col">
+    <div className="min-h-screen dark:bg-black dark:text-white bg-gray-200 text-black overflow-hidden flex flex-col">
                 {/* Hero Section */}
                 <div className="flex-1 flex flex-col items-center justify-center text-center px-4">
                     <motion.h1
@@ -25,7 +25,7 @@ const HeroSection = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.3 }}
-                        className="text-lg md:text-xl text-white/80 mt-4 z-10 max-w-xl"
+                        className="text-lg md:text-xl mt-4 z-10 max-w-xl"
                     >
                         Manage bills, get smart reminders, and track spending effortlessly with Kosh.
                     </motion.p>
@@ -37,7 +37,7 @@ const HeroSection = () => {
                         className="flex items-center gap-4 mt-8 z-10"
                     >
                         <Link to="/signup" className="flex items-center">
-                            <button className="bg-indigo-600 hover:bg-indigo-500 transition-colors px-6 py-3 rounded-lg text-white font-semibold">
+                            <button className="bg-indigo-600 hover:bg-indigo-500 transition-colors px-6 py-3 rounded-lg text-white/80 font-semibold">
                                 Get Started Free
                                 <ArrowRight size={16} className="inline-block ml-2" />
                             </button>
@@ -49,19 +49,19 @@ const HeroSection = () => {
                 {/* Cards Section */}
                 <div className="flex justify-center gap-2 px-2 pb-24 -mt-20 perspective-[1000px]">
                     <div
-                        className="w-72 h-56  rounded-xl border border-white/20 backdrop-blur-md"
+                        className="w-72 h-56  rounded-xl border dark:border-white/20 border-black/20 backdrop-blur-md"
                         style={{ transform: 'rotateY(-20deg)', transformStyle: 'preserve-3d' }}
                     />
 
                     <div
-                        className="w-72 h-56 p-4 rounded-xl border border-white/20 backdrop-blur-md text-center"
+                        className="w-72 h-56 p-4 rounded-xl border dark:border-white/20 border-black/20 backdrop-blur-md text-center"
                         style={{ transform: 'rotateY(-10deg)', transformStyle: 'preserve-3d' }}
                     >
-                        <h3 className="text-lg font-semibold mb-2 text-white">Bill Management</h3>
-                        <p className=" text-white/50">Easy manage, pay and reconcile bills.</p>
+                        <h3 className="text-lg font-semibold mb-2">Bill Management</h3>
+                        <p className=" dark:text-white/50 text-black/60">Easy manage, pay and reconcile bills.</p>
                         <div className='mt-4 flex justify-center items-center gap-2 text-[13px]'>
-                            <span className='p-1.5 rounded-2xl border border-white/50'>Show as List</span>
-                            <span className=' flex items-center p-1.5 rounded-2xl border border-white/50'>
+                            <span className='p-1.5 rounded-2xl border dark:border-white/50 border-black/50'>Show as List</span>
+                            <span className=' flex items-center p-1.5 rounded-2xl border dark:border-white/50 border-black/50'>
                                 <ArrowDown size={12} className="inline-block " />
                                 <p>Download .CSV</p>
                             </span>
@@ -69,49 +69,49 @@ const HeroSection = () => {
                     </div>
 
                     <div
-                        className="w-72 h-74 p-6 rounded-xl border border-white/20 backdrop-blur-md shadow-xl z-10 text-center"
+                        className="w-72 h-74 p-6 rounded-xl border dark:border-white/20 border-black/20 backdrop-blur-md shadow-xl z-10 text-center"
                         style={{ transform: 'rotateY(0deg)', transformStyle: 'preserve-3d' }}
                     >
-                        <h3 className="text-lg font-semibold text-white mb-1">Upcoming Bills</h3>
-                        <p className="text-white/80 text-sm">
+                        <h3 className="text-lg font-semibold mb-1">Upcoming Bills</h3>
+                        <p className=" text-sm">
                             Stay on top of your finances with smart reminders for upcoming bills.
                         </p>
-                        <div className="mt-4 p-3 rounded-md text-sm border border-white/20 bg-white/10 flex items-center justify-between gap-2">
+                        <div className="mt-4 p-3 rounded-md text-sm border dark:border-white/20 border-black/20 bg-white/10 flex items-center justify-between gap-2">
                             <img className='w-6 h-6' src={Drive} alt="Google Drive" />
                             <span className="text-sm">Drive</span>
-                            <p className="text-white/50 text-sm">$19</p>
-                            <p className="text-white/50 text-sm">15th June</p>
+                            <p className="text-black/50 dark:text-white/50 text-sm">$19</p>
+                            <p className="text-black/50 dark:text-white/50 text-sm">15th June</p>
                         </div>
-                        <div className="mt-2 p-3 rounded-md text-sm border border-white/20 bg-white/10 flex items-center justify-between gap-2">
+                        <div className="mt-2 p-3 rounded-md text-sm border dark:border-white/20 border-black/20 bg-white/10 flex items-center justify-between gap-2">
                             <img className='w-6 h-6' src={Netflix} alt="Netflix" />
                             <span className="text-sm">Netflix</span>
-                            <p className="text-white/50 text-sm">$7.99</p>
-                            <p className="text-white/50 text-sm">19th June</p>
+                            <p className="text-black/50 dark:text-white/50 text-sm">$7.99</p>
+                            <p className="text-black/50 dark:text-white/50 text-sm">19th June</p>
                         </div>
-                        <div className="mt-2 p-3 rounded-md text-sm border border-white/20 bg-white/10 flex items-center justify-between gap-2">
+                        <div className="mt-2 p-3 rounded-md text-sm border dark:border-white/20 border-black/20 bg-white/10 flex items-center justify-between gap-2">
                             <img className='w-6 h-6' src={Spotify} alt="Spotify" />
                             <span className="text-sm">Spotify</span>
-                            <p className="text-white/50 text-sm">$11.99</p>
-                            <p className="text-white/50 text-sm">30th June</p>
+                            <p className="text-black/50 dark:text-white/50 text-sm">$11.99</p>
+                            <p className="text-black/50 dark:text-white/50 text-sm">30th June</p>
                         </div>
                     </div>
 
                     <div
-                        className="w-72 h-56  p-4 rounded-xl border border-white/20 backdrop-blur-md text-center justify-between flex flex-col"
+                        className="w-72 h-56  p-4 rounded-xl border dark:border-white/20 border-black/20 backdrop-blur-md text-center justify-between flex flex-col"
                         style={{ transform: 'rotateY(10deg)', transformStyle: 'preserve-3d' }}
                     >
                         <div className='flex items-center justify-between gap-2 mb-2'>
                             <img className='w-8 h-8' src={Mastercard} alt="MasterCard" />
-                            <span className='p-1 px-1.5 rounded-2xl text-sm border border-white/60'>Show Balance</span>
+                            <span className='p-1 px-1.5 rounded-2xl text-sm border dark:border-white/50 border-black/50'>Show Balance</span>
                         </div>
                         <div className='flex flex-col text-left'>
-                            <p className='text-sm text-white/50'>My Credit Card</p>
+                            <p className='text-sm dark:text-white/50 text-black/50'>My Credit Card</p>
                             <p className='text-sm'>6348 **** **** 1234</p>
                         </div>
                     </div>
 
                     <div
-                        className="w-72 h-56  rounded-xl border border-white/20 backdrop-blur-md"
+                        className="w-72 h-56  rounded-xl border dark:border-white/20 border-black/20 backdrop-blur-md"
                         style={{ transform: 'rotateY(20deg)', transformStyle: 'preserve-3d' }}
                     />
                 </div>

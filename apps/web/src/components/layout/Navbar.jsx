@@ -18,7 +18,7 @@ const Navbar = () => {
     }, []);
     
     return (
-        <div className="fixed top-0 left-0 right-0 z-50">
+        <div className="fixed top-0 left-0 right-0 z-50 dark:text-white text-black">
             <motion.nav 
                 initial={{ 
                     backgroundColor: 'rgb(0 0 0)',
@@ -40,7 +40,7 @@ const Navbar = () => {
                     ease: "easeInOut",
                     backgroundColor: { duration: 0.2 }
                 }}
-                className={`text-white mx-auto ${isScrolled ? 'max-w-7xl' : 'w-full'}`}
+                className={`mx-auto ${isScrolled ? 'max-w-7xl' : 'w-full'}`}
             >
                 <div className="flex justify-between items-center w-full">
                     {/* Left side - Feature, Price, Contact */}
@@ -48,7 +48,7 @@ const Navbar = () => {
                         {['Features', 'Pricing', 'Contact'].map((item) => (
                             <Link 
                                 key={item}
-                                to={`/${item.toLowerCase()}`} 
+                                to={`${item.toLowerCase()}`} 
                                 className="hover:text-blue-400 transition-colors duration-300 relative group"
                             >
                                 {item}

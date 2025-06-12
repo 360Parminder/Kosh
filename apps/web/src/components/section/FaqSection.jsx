@@ -38,7 +38,7 @@ const FaqSection = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-20 text-white/90">
+    <div className=" mx-auto px-4 py-20 dark:text-white/90 text-black/90 bg-gray-200 dark:bg-black">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ const FaqSection = () => {
         Frequently Asked Questions
       </motion.h2>
 
-      <div className="space-y-4">
+      <div className="space-y-4 max-w-7xl mx-auto">
         {faqData.map((faq, index) => (
           <motion.div
             key={index}
@@ -57,11 +57,11 @@ const FaqSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="border border-white/20 backdrop-blur-md rounded-xl px-6 py-4"
+            className="border dark:border-white/20 border-black/20 backdrop-blur-md rounded-xl px-6 py-4"
           >
             <button
               onClick={() => toggle(index)}
-              className="w-full flex justify-between items-center text-left text-white"
+              className="w-full flex justify-between items-center text-left "
             >
               <span className="font-medium">{faq.question}</span>
               <motion.span
@@ -79,7 +79,7 @@ const FaqSection = () => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="text-white/70 text-sm mt-3 overflow-hidden"
+                  className="dark:text-white/70 text-black/70 text-sm mt-3 overflow-hidden"
                 >
                   {faq.answer}
                 </motion.p>
