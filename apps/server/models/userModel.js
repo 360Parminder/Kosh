@@ -3,9 +3,23 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
-  name: {
+  avatar: {
     type: String,
-    required: [true, "Please fill your name"],
+    default: "https://res.cloudinary.com/dvo4tvvgb/image/upload/v1737770516/Profile/image.jpg",
+    validate: {
+      validator: function(el) {
+        return validator.isURL(el);
+      },
+      message: "Please provide a valid URL for the avatar",
+    },
+  },
+  firstname: {
+    type: String,
+    required: [true, "Please fill your firstname"],
+  },
+  lastname: {
+    type: String,
+    required: [true, "Please fill your lastname"],
   },
   email: {
     type: String,
@@ -13,6 +27,31 @@ const userSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
     validate: [validator.isEmail, " Please provide a valid email"],
+  },
+  verifyEmail: {
+    type: Boolean,
+    default: false,
+    select: false, // Don't return this field by default
+  },
+  phone: {
+    type: String,
+    required: [true, "Please fill your phone number"],
+    validate: {
+      validator: function(el) {
+        return validator.isMobilePhone(el, "any", { strictMode: false });
+      },
+      message: "Please provide a valid phone number",
+    },
+  },
+  dateOfBirth: {
+    type: Date,
+    required: [true, "Please fill your date of birth"],
+    validate: {
+      validator: function(el) {
+        return validator.isDate(el);
+      },
+      message: "Please provide a valid date of birth",
+    },
   },
   address: {
     type: String,
@@ -38,7 +77,7 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     enum: ["admin", "developer", "tester","user"],
-    default: "student",
+    default: "user",
   },
   active: {
     type: Boolean,
