@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import ScrollToTop from "./utils/ScrollToTop";
 import FeaturePage from "./pages/FeaturePage";
 import Contact from "./pages/policies/Contact";
+import About from "./pages/policies/About";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="features" element={<FeaturePage />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="about" element={<About />} />
         </Route>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignupForm />} />
