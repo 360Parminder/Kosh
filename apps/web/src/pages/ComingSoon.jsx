@@ -56,6 +56,12 @@ const ComingSoon = () => {
         setError('');
     };
 
+    const scrollToInfo = () => {
+        document.getElementById('info-section').scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    };
+
     return (
         <div className="bg-black text-white overflow-hidden">
             {/* Hero Section with Coming Soon */}
@@ -91,10 +97,46 @@ const ComingSoon = () => {
                 />
                 <div className="absolute bottom-0 w-[55vw] h-[77vh] backdrop-blur-2xl rounded-t-full z-0" />
 
+                {/* Scroll down indicator */}
+                <motion.div 
+                    className="absolute bottom-8 z-20 cursor-pointer"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                        duration: 1, 
+                        ease: "easeOut", 
+                        delay: 3,
+                        y: {
+                            duration: 0.8,
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "easeInOut"
+                        }
+                    }}
+                    onClick={scrollToInfo}
+                >
+                    <div className="flex flex-col items-center text-indigo-300">
+                        <span className="mb-2 text-sm tracking-wider">LEARN MORE</span>
+                        <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            className="h-6 w-6" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor"
+                        >
+                            <path 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth={2} 
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+                            />
+                        </svg>
+                    </div>
+                </motion.div>
             </div>
 
             {/* Info Section */}
-            <div className="relative bg-indigo-800 px-4 py-16 md:px-8">
+            <div id="info-section" className="relative bg-indigo-800 px-4 py-16 md:px-8">
                 <div className="max-w-5xl mx-auto">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
