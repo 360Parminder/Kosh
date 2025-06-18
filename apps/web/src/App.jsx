@@ -3,11 +3,12 @@ import LoginForm from "./components/auth/LoginForm";
 // import ComingSoon from "./pages/ComingSoon";
 import SignupForm from "./components/auth/SignupForm";
 import RootLayout from "./layout/RootLayout";
-import Home from "./pages/Home";
+import Landing from "./pages/Landing";
 import ScrollToTop from "./utils/ScrollToTop";
 import FeaturePage from "./pages/FeaturePage";
 import Contact from "./pages/policies/Contact";
 import About from "./pages/policies/About";
+import DashboardLayout from "./layout/DashboardLayout";
 
 const App = () => {
   return (
@@ -18,10 +19,16 @@ const App = () => {
       <Routes>
         {/* <Route path="/" element={<ComingSoon />} /> */}
         <Route path="/" element={<RootLayout />} >
-          <Route index element={<Home />} />
+          <Route index element={<Landing />} />
           <Route path="features" element={<FeaturePage />} />
           <Route path="contact" element={<Contact />} />
           <Route path="about" element={<About />} />
+        </Route>
+
+        <Route path="dashboard" element={<DashboardLayout />}>
+            {/* <Route index element={<DashboardHome />} /> */}
+            {/* <Route path="settings" element={<DashboardSettings />} /> */}
+            {/* <Route path="profile" element={<DashboardProfile />} /> */}
         </Route>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignupForm />} />
