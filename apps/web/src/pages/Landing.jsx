@@ -5,7 +5,7 @@ import FaqSection from '../components/section/FaqSection';
 import { Link } from 'react-router-dom';
 import HeroSection from '../components/section/HeroSection';
 
-const Home = () => {
+const Landing = () => {
     return (
         <>
 
@@ -16,4 +16,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Landing;

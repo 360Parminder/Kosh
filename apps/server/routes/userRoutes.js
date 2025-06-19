@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 
 router.post('/login', authController.login);
-router.post('/signup', authController.signup);
+router.post('/signup', upload.single('avatar'), authController.signup);
 
 // Protect all routes after this middleware
 router.use(authController.protect);

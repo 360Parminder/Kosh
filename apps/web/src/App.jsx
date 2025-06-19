@@ -9,6 +9,7 @@ import FeaturePage from "./pages/FeaturePage";
 import Contact from "./pages/policies/Contact";
 import About from "./pages/policies/About";
 import DashboardLayout from "./layout/DashboardLayout";
+import Home from "./pages/dashboard/Home";
 
 const App = () => {
   return (
@@ -26,7 +27,7 @@ const App = () => {
         </Route>
 
         <Route path="dashboard" element={<DashboardLayout />}>
-            {/* <Route index element={<DashboardHome />} /> */}
+            <Route index element={<Home />} />
             {/* <Route path="settings" element={<DashboardSettings />} /> */}
             {/* <Route path="profile" element={<DashboardProfile />} /> */}
         </Route>

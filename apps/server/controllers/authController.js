@@ -2,7 +2,7 @@ const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const AppError = require("../utils/appError");
-
+      const uploadAvatar = require("../utils/cloudinary");
 const createToken = id => {
   return jwt.sign(
     {
@@ -63,9 +63,32 @@ exports.login = async (req, res, next) => {
 
 exports.signup = async (req, res, next) => {
   try {
+    const requiredFields = ["firstname", "lastname", "email", "password", "passwordConfirm", "phone", "dateOfBirth"];
+    for (const field of requiredFields) {
+      if (!req.body[field]) {
+        return res.status(400).json({
+          status: "fail",
+          message: `Please provide ${field}`,
+        });
+      }
+    }
+    
+    // Handle avatar image upload
+    let avatar = 'https://res.cloudinary.com/dvo4tvvgb/image/upload/v1737770516/Profile/image.jpg'; // Default avatar
+    if (req.file) {
+      const avatarUrl = await uploadAvatar(req.file.path, req.body.phone);
+      // If using multer middleware to handle file uploads
+      avatar = avatarUrl || avatar; // Use uploaded avatar or default if upload fails
+    }
+    
     const user = await User.create({
-      name: req.body.name,
+      avatar: avatar,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       email: req.body.email,
+      phone: req.body.phone,
+      dateOfBirth: req.body.dateOfBirth,
+      address: req.body.address,
       password: req.body.password,
       passwordConfirm: req.body.passwordConfirm,
       role: req.body.role,

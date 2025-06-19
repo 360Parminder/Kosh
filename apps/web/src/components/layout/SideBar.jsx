@@ -26,11 +26,12 @@ const SideBar = ({ user }) => {
                 { name: 'Transactions', icon: <DollarSign size={20} />, path: '/transactions' },
                 { name: 'Reports', icon: <FileText size={20} />, path: '/reports' },
                 { name: 'Payments', icon: <CreditCard size={20} />, path: '/payments' },
-                { name: 'Subscriptions', icon: <Box size={20} />, path: '/subscriptions' }
+                { name: 'Subscriptions', icon: <Box size={20} />, path: '/subscriptions' },
+                { name: 'Accounts', icon: <Box size={20} />, path: '/accounts' }
         ];
 
         return (
-                <div className="flex flex-col h-screen bg-white border-r border-gray-200 dark:bg-black dark:text-white w-64">
+                <div className="flex flex-col h-screen bg-white  dark:bg-[#171717] dark:text-white w-64">
                         {/* App Logo */}
                         <div className="p-4">
                                 <img 
