@@ -126,7 +126,7 @@ const Home = () => {
             
             {/* Account Balance Chart */}
             <motion.div 
-                className="bg-gray-800 p-4 rounded-lg shadow mb-6 border border-gray-700"
+                className="bg-[#1c1c1ccf] p-4 rounded-lg shadow mb-6 border border-[#171717]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
@@ -152,7 +152,7 @@ const Home = () => {
             
             {/* Transactions Table */}
             <motion.div 
-                className="bg-gray-800 p-4 rounded-lg shadow border border-gray-700"
+                className="bg-[#1c1c1ccf] p-4 rounded-lg shadow border border-[#171717]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}

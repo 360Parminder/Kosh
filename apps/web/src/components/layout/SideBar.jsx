@@ -16,7 +16,7 @@ const SideBar = ({ user }) => {
         const defaultUser = {
                 name: 'John Doe',
                 email: 'john.doe@example.com',
-                avatar: 'https://via.placeholder.com/40'
+                avatar: 'https://res.cloudinary.com/dvo4tvvgb/image/upload/v1737770516/Profile/image.jpg'
         };
         
         const currentUser = user || defaultUser;
@@ -27,18 +27,19 @@ const SideBar = ({ user }) => {
                 { name: 'Reports', icon: <FileText size={20} />, path: '/reports' },
                 { name: 'Payments', icon: <CreditCard size={20} />, path: '/payments' },
                 { name: 'Subscriptions', icon: <Box size={20} />, path: '/subscriptions' },
-                { name: 'Accounts', icon: <Box size={20} />, path: '/accounts' }
+                { name: 'Bank Accounts', icon: <Box size={20} />, path: 'bankaccounts' }
         ];
 
         return (
                 <div className="flex flex-col h-screen bg-white  dark:bg-[#171717] dark:text-white w-64">
                         {/* App Logo */}
-                        <div className="p-4">
+                        <div className="p-4 flex flex-row items-center gap-3" >
                                 <img 
                                         src="/logo.svg" 
                                         alt="Kosh Logo" 
                                         className="h-10"
                                 />
+                                <p className="text-[24px] font-semibold">Kosh</p>
                         </div>
 
                         {/* Navigation Tabs */}
@@ -48,7 +49,7 @@ const SideBar = ({ user }) => {
                                                 <li key={index}>
                                                         <Link 
                                                                 to={tab.path}
-                                                                className="flex items-center px-6 py-3 hover:bg-gray-800 mx-2 my-1 rounded-lg text-gray-700 hover:text-white transition-colors duration-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
+                                                                className="flex items-center px-6 py-3 mx-2 my-1 rounded-lg text-gray-700 hover:text-white transition-colors duration-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
                                                         >
                                                                 <span className="mr-3">{tab.icon}</span>
                                                                 <span>{tab.name}</span>
