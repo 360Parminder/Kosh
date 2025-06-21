@@ -9,6 +9,8 @@ const cors = require('cors');
 
 const userRoutes = require('./routes/userRoutes');
 const notifyRoutes = require('./routes/notifyRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
+const accountAggregatorRoutes = require('./routes/accountAggregatorRoutes');
 const globalErrHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const app = express();
@@ -48,6 +50,8 @@ app.get('/status', (req, res) => {
 // Routes
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/notifications', notifyRoutes);
+app.use('/api/v1/payments', paymentRoutes);
+app.use('/api/v1/aa', accountAggregatorRoutes);
 
 // handle undefined Routes
 app.use('*', (req, res, next) => {

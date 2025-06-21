@@ -126,7 +126,7 @@ const Home = () => {
             
             {/* Account Balance Chart */}
             <motion.div 
-                className="bg-[#1c1c1ccf] p-4 rounded-lg shadow mb-6 border border-[#171717]"
+                className="bg-[#171717] p-4 rounded-lg shadow mb-6 border border-[#2e2e2e]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
