@@ -8,6 +8,7 @@ const upload = multer({ dest: 'uploads/' });
 
 router.use(protect);
 router.post('/upload',upload.single('accountStatement'),uploadAccountStatement);
+// router.
 
 
 module.exports = router;
