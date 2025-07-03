@@ -1,6 +1,5 @@
 const { extractTransactionsFromPDF } = require('../utils/extractFromPdf');
 const { classifyTransactions } = require('../utils/transactionClassifier');
-const mongoose = require('mongoose');
 const SubscriptionModel = require('../models/SubscriptionModel');
 
 exports.uploadAccountStatement = async (req, res) => {
@@ -63,5 +62,34 @@ exports.uploadAccountStatement = async (req, res) => {
     } catch (error) {
         console.log('Error uploading file:', error);
         res.status(500).json({ message: 'Error uploading file', error: error.message });
+    }
+}
+
+exports.getSubscriptions = async (req, res) => {
+    try {
+        const userId = req.user._id; // Assuming authentication middleware sets req.user
+        
+        const subscriptionDoc = await SubscriptionModel.findOne({ userId });
+        
+        if (!subscriptionDoc) {
+            return res.status(404).json({ message: 'No subscriptions found for this user' });
+        }
+        
+        res.status(200).json({
+            message: 'Subscriptions retrieved successfully',
+            subscriptions: subscriptionDoc.Subscription
+        });
+    } catch (error) {
+        console.log('Error retrieving subscriptions:', error);
+        res.status(500).json({ message: 'Error retrieving subscriptions', error: error.message });
+    }
+}
+exports.initiateLink = async (req, res) => {
+    try {
+      
+        res.status(200).json({ message: 'Link initiation successful' });
+    } catch (error) {
+        console.log('Error initiating link:', error);
+        res.status(500).json({ message: 'Error initiating link', error: error.message });
     }
 }
