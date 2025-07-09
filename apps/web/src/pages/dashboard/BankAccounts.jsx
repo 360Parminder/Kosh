@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Upload, Plus, FileText, Trash2, AlertCircle } from 'lucide-react';
+import { Upload, Plus, FileText, Trash2, AlertCircle, Phone, Link } from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
 
 const BankAccounts = () => {
@@ -10,6 +10,8 @@ const BankAccounts = () => {
     ]);
     const [selectedBank, setSelectedBank] = useState(null);
     const [uploading, setUploading] = useState(false);
+    const [mobileNumber, setMobileNumber] = useState('');
+    const [linkingStatus, setLinkingStatus] = useState(null); // 'loading', 'success', 'error'
 
     const { getRootProps, getInputProps } = useDropzone({
         accept: {
@@ -68,6 +70,24 @@ const BankAccounts = () => {
         setBanks(updatedBanks);
     };
 
+    const handleLinkAccount = (e) => {
+        e.preventDefault();
+        if (mobileNumber.length === 10) {
+            setLinkingStatus('loading');
+            // Simulate API call
+            setTimeout(() => {
+                setLinkingStatus('success');
+                // Reset form after success
+                setTimeout(() => {
+                    setLinkingStatus(null);
+                    setMobileNumber('');
+                }, 3000);
+            }, 2000);
+        } else {
+            setLinkingStatus('error');
+        }
+    };
+
     return (
         <div className="min-h-screen p-8">
             <motion.div
@@ -76,6 +96,75 @@ const BankAccounts = () => {
                 className="max-w-6xl mx-auto"
             >
                 <h1 className="text-3xl font-bold mb-8">Bank Accounts</h1>
+
+                {/* Link Bank Account Section */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-[#1c1c1ccf] rounded-xl p-6 mb-8"
+                >
+                    <h2 className="text-xl font-semibold mb-4 flex items-center">
+                        <Link className="mr-2" size={20} />
+                        Link Bank Account
+                    </h2>
+                    
+                    <form onSubmit={handleLinkAccount} className="flex flex-col md:flex-row gap-4 items-end">
+                        <div className="flex-1">
+                            <label htmlFor="mobileNumber" className="block text-sm font-medium mb-2">
+                                Registered Mobile Number
+                            </label>
+                            <div className="relative">
+                                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <Phone size={18} className="text-gray-400" />
+                                </div>
+                                <input
+                                    type="tel"
+                                    id="mobileNumber"
+                                    value={mobileNumber}
+                                    onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, ''))}
+                                    maxLength={10}
+                                    className="pl-10 w-full p-3 bg-black border border-gray-600 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder="Enter 10 digit mobile number"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            type="submit"
+                            disabled={linkingStatus === 'loading'}
+                            className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-medium transition-colors"
+                        >
+                            {linkingStatus === 'loading' ? (
+                                <div className="flex items-center">
+                                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                                    Linking...
+                                </div>
+                            ) : 'Link Account'}
+                        </motion.button>
+                    </form>
+                    
+                    {linkingStatus === 'success' && (
+                        <motion.div 
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            className="mt-4 bg-green-900/30 border border-green-500 p-4 rounded-lg text-green-300"
+                        >
+                            Success! We've sent a verification link to your bank's registered mobile number.
+                        </motion.div>
+                    )}
+                    
+                    {linkingStatus === 'error' && (
+                        <motion.div 
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            className="mt-4 bg-red-900/30 border border-red-500 p-4 rounded-lg text-red-300"
+                        >
+                            Please enter a valid 10-digit mobile number.
+                        </motion.div>
+                    )}
+                </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Bank List */}

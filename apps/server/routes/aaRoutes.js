@@ -9,7 +9,6 @@ const upload = multer({ dest: 'uploads/' });
 router.use(protect);
 router.post('/upload',upload.single('accountStatement'),uploadAccountStatement);
 
-
 router.post('/initiate-link',initiateLink)
 
 router.get('/subscriptions',getSubscriptions);
