@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 // import ComingSoon from "./pages/ComingSoon";
 import SignupForm from "./components/auth/SignupForm";
@@ -11,12 +11,19 @@ import About from "./pages/policies/About";
 import DashboardLayout from "./layout/DashboardLayout";
 import Home from "./pages/dashboard/Home";
 import BankAccounts from "./pages/dashboard/BankAccounts";
+import Transactions from "./pages/dashboard/transactions";
+import { useAuth } from "./Context/AuthContext";
 
 const App = () => {
+  const navigate = useNavigate();
+  const {isAuthenticated} = useAuth();
   return (
     // <ComingSoon />
     // <LoginForm />
     <>
+    {/* {
+      isAuthenticated?navigate('/dashboard'):navigate('/login')
+    } */}
       <ScrollToTop />
       <Routes>
         {/* <Route path="/" element={<ComingSoon />} /> */}
@@ -30,6 +37,7 @@ const App = () => {
         <Route path="dashboard" element={<DashboardLayout />}>
             <Route index element={<Home />} />
             <Route path="bankaccounts" element={<BankAccounts />} />
+            <Route path="transactions" element={<Transactions />} />
             {/* <Route path="settings" element={<DashboardSettings />} /> */}
             {/* <Route path="profile" element={<DashboardProfile />} /> */}
         </Route>

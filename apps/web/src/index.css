@@ -1,4 +1,15 @@
 @import "tailwindcss";
+
+@theme static {
+  --color-primary: #000000;
+  --color-secondary: #171717;
+  --color-accent: #1c1c1c;
+  --color-text: #ffffff;
+  --color-text-secondary: #b0b0b0;
+  --color-border: #2e2e2e;
+  --color-hover: #3c3c3c;
+
+}
 body{
   background-color: black;
 }

@@ -10,8 +10,10 @@ import {
     CreditCard, 
     Box 
 } from 'lucide-react';
+import { useAuth } from '../../Context/AuthContext';
 
-const SideBar = ({ user }) => {
+const SideBar = () => {
+        const {user}= useAuth(); // Assuming you have an AuthContext that provides the current user
         // Default user if not provided
         const defaultUser = {
                 name: 'John Doe',
@@ -23,7 +25,7 @@ const SideBar = ({ user }) => {
         
         const tabs = [
                 { name: 'Dashboard', icon: <Home size={20} />, path: '/dashboard' },
-                { name: 'Transactions', icon: <DollarSign size={20} />, path: '/transactions' },
+                { name: 'Transactions', icon: <DollarSign size={20} />, path: 'transactions' },
                 { name: 'Reports', icon: <FileText size={20} />, path: '/reports' },
                 { name: 'Payments', icon: <CreditCard size={20} />, path: '/payments' },
                 { name: 'Subscriptions', icon: <Box size={20} />, path: '/subscriptions' },
@@ -49,7 +51,7 @@ const SideBar = ({ user }) => {
                                                 <li key={index}>
                                                         <Link 
                                                                 to={tab.path}
-                                                                className="flex items-center px-6 py-3 mx-2 my-1 rounded-lg text-gray-700 hover:text-white transition-colors duration-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
+                                                                className="flex items-center px-6 py-3 mx-2 my-1 rounded-lg text-gray-700 hover:text-white transition-colors duration-200 dark:text-gray-300 dark:hover:bg-hover dark:hover:text-white"
                                                         >
                                                                 <span className="mr-3">{tab.icon}</span>
                                                                 <span>{tab.name}</span>
@@ -87,7 +89,7 @@ const SideBar = ({ user }) => {
                                                         className="w-10 h-10 rounded-full mr-3"
                                                 />
                                                 <div>
-                                                        <p className="font-medium ">{currentUser.name}</p>
+                                                        <p className="font-medium capitalize ">{currentUser.firstname} {currentUser.lastname}</p>
                                                         <p className="text-sm ">{currentUser.email}</p>
                                                 </div>
                                         </div>

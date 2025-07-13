@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Home, Mail, Lock, User } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Context/AuthContext';
 
 const LoginForm = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const { login } = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,10 +25,15 @@ const LoginForm = () => {
 
         try {
             setIsLoading(true);
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            // Login logic would go here
-            console.log('Login attempted with:', email, password);
+            const response = await login(email, password);
+            console.log('Login response:', response);
+            
+            if (response.error) {
+                setError(response.error);
+            } else {
+                setError('');
+               navigate('/dashboard');
+            }
         } catch (error) {
             setError('Login failed. Please try again.');
         } finally {

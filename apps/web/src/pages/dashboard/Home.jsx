@@ -43,7 +43,7 @@ const Home = () => {
             {/* Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <motion.div 
-                    className=" p-4 rounded-lg transition-shadow shadow hover:shadow-md border border-[#171717]"
+                    className=" bg-secondary p-4 rounded-lg transition-shadow shadow hover:shadow-md border border-border"
                     variants={cardVariants}
                     initial="hidden"
                     animate="visible"
@@ -61,7 +61,7 @@ const Home = () => {
                 </motion.div>
                 
                 <motion.div 
-                    className=" p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-[#171717]"
+                    className=" bg-secondary p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-border"
                     variants={cardVariants}
                     initial="hidden"
                     animate="visible"
@@ -79,7 +79,7 @@ const Home = () => {
                 </motion.div>
                 
                 <motion.div 
-                    className=" p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-[#171717]"
+                    className=" bg-secondary p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-border"
                     variants={cardVariants}
                     initial="hidden"
                     animate="visible"
@@ -103,7 +103,7 @@ const Home = () => {
                 {servicesData.map((service, index) => (
                     <motion.div 
                         key={index}
-                        className="p-4 rounded-lg shadow hover:shadow-md cursor-pointer border border-[#171717]"
+                        className="bg-secondary p-4 rounded-lg shadow hover:shadow-md cursor-pointer border border-border"
                         variants={cardVariants}
                         initial="hidden"
                         animate="visible"
@@ -111,7 +111,7 @@ const Home = () => {
                         whileHover={{ scale: 1.03 }}
                     >
                         <div className="flex items-center justify-between">
-                            <div className="w-12 h-12 flex items-center justify-center bg-gray-700 rounded-full text-2xl">
+                            <div className="w-12 h-12 flex items-center justify-center bg-primary rounded-full text-2xl">
                                 {service.logo}
                             </div>
                             <div className="text-right">
@@ -126,7 +126,7 @@ const Home = () => {
             
             {/* Account Balance Chart */}
             <motion.div 
-                className="bg-[#171717] p-4 rounded-lg shadow mb-6 border border-[#2e2e2e]"
+                className="bg-secondary p-4 rounded-lg shadow mb-6 border border-border"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
@@ -152,7 +152,7 @@ const Home = () => {
             
             {/* Transactions Table */}
             <motion.div 
-                className="bg-[#1c1c1ccf] p-4 rounded-lg shadow border border-[#171717]"
+                className="bg-secondary p-4 rounded-lg shadow border border-border"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -161,19 +161,19 @@ const Home = () => {
                     <h2 className="text-xl font-bold text-gray-200">Recent Transactions</h2>
                     <div className="flex space-x-2">
                         <button 
-                            className={`px-3 py-1 rounded ${timePeriod === 'day' ? 'bg-blue-600 text-gray-100' : 'bg-gray-700 text-gray-300'}`}
+                            className={`px-3 py-1 rounded ${timePeriod === 'day' ? 'bg-primary text-gray-100' : 'bg-accent text-gray-300'}`}
                             onClick={() => setTimePeriod('day')}
                         >
                             Day
                         </button>
                         <button 
-                            className={`px-3 py-1 rounded ${timePeriod === 'week' ? 'bg-blue-600 text-gray-100' : 'bg-gray-700 text-gray-300'}`}
+                            className={`px-3 py-1 rounded ${timePeriod === 'week' ? 'bg-primary text-gray-100' : 'bg-accent text-gray-300'}`}
                             onClick={() => setTimePeriod('week')}
                         >
                             Week
                         </button>
                         <button 
-                            className={`px-3 py-1 rounded ${timePeriod === 'month' ? 'bg-blue-600 text-gray-100' : 'bg-gray-700 text-gray-300'}`}
+                            className={`px-3 py-1 rounded ${timePeriod === 'month' ? 'bg-primary text-gray-100' : 'bg-accent text-gray-300'}`}
                             onClick={() => setTimePeriod('month')}
                         >
                             Month
@@ -183,7 +183,7 @@ const Home = () => {
                 
                 <div className="overflow-x-auto">
                     <table className="min-w-full">
-                        <thead className="bg-gray-700">
+                        <thead className="rounded-3xl overflow-hidden">
                             <tr>
                                 <th className="py-2 px-4 text-left text-sm font-medium text-gray-300">Description</th>
                                 <th className="py-2 px-4 text-left text-sm font-medium text-gray-300">Date</th>
@@ -199,7 +199,7 @@ const Home = () => {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ duration: 0.3 }}
-                                    className="border-b border-gray-700"
+                                    className=""
                                 >
                                     <td className="py-2 px-4 text-gray-300">{transaction.description}</td>
                                     <td className="py-2 px-4 text-gray-300">{transaction.date}</td>

@@ -7,12 +7,12 @@ export default defineConfig({
   plugins: [react(),tailwindcss()],
   server: {
     port: 3000,
-    // proxy: {
-    //   '/api': {
-    //     target: 'https://kosh-35xu.onrender.com',
-    //     changeOrigin: true,
-    //     rewrite: (path) => path.replace(/^\/api/, '')
-    //   }
-    // }
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8500', // Adjust the target to your backend server
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   },
 })
