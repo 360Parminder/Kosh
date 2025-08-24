@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useAuth } from "../../Context/AuthContext";
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -16,7 +17,9 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-    
+
+    const {user} = useAuth();
+
     return (
         <div className="fixed top-0 left-0 right-0 z-50 dark:text-white text-black">
             <motion.nav 
@@ -100,20 +103,36 @@ const Navbar = () => {
                                 />
                             </Link>
                         ))}
-                        <motion.div
-                            whileHover={{ 
-                                y: -2, 
-                                boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                                transition: { duration: 0.2 }
-                            }}
-                        >
-                            <Link 
-                                to="/login" 
-                                className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-all duration-200 block"
-                            >
-                                Get Started
-                            </Link>
-                        </motion.div>
+                        {
+                            user ? (
+                                <Link 
+                                    to="/dashboard" 
+                                    className="hover:text-blue-400 transition-colors duration-300 relative group"
+                                >
+                                    <img src={user?.avatar} alt="Profile" className="h-8 w-8 rounded-full" />
+                                    <motion.span 
+                                        className="absolute -bottom-1 left-0 h-0.5 bg-blue-400"
+                                        initial={{ width: 0 }}
+                                        whileHover={{ width: "100%" }}
+                                        transition={{ duration: 0.2 }}
+                                    />
+                                </Link>
+                            ) : (
+                                <Link 
+                                    to="/login" 
+                                    className="hover:text-blue-400 transition-colors duration-300 relative group"
+                                >
+                                    Get Started
+                                    <motion.span 
+                                        className="absolute -bottom-1 left-0 h-0.5 bg-blue-400"
+                                        initial={{ width: 0 }}
+                                        whileHover={{ width: "100%" }}
+                                        transition={{ duration: 0.2 }}
+                                    />
+                                </Link>
+                            )
+                        }
+                    
                     </div>
                 </div>
             </motion.nav>

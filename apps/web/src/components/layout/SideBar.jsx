@@ -35,15 +35,14 @@ const SideBar = () => {
         return (
                 <div className="flex flex-col h-screen bg-white  dark:bg-[#171717] dark:text-white w-64">
                         {/* App Logo */}
-                        <div className="p-4 flex flex-row items-center gap-3" >
-                                <img 
+                              <button className="p-4 flex flex-row items-center gap-3" onClick={() => window.location.href = '/'}>
+                                  <img 
                                         src="/logo.svg" 
                                         alt="Kosh Logo" 
                                         className="h-10"
                                 />
                                 <p className="text-[24px] font-semibold">Kosh</p>
-                        </div>
-
+                              </button>
                         {/* Navigation Tabs */}
                         <nav className="flex-grow mt-6">
                                 <ul>
