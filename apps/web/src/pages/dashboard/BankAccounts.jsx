@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Upload, Plus, FileText, Trash2, AlertCircle, Phone, Link } from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
-
+import axios from 'axios';
 const BankAccounts = () => {
     const [banks, setBanks] = useState([
         { id: 1, name: 'HDFC Bank', statements: [{ id: 1, name: 'January Statement.pdf', date: '2023-01-15' }] },
@@ -70,11 +70,16 @@ const BankAccounts = () => {
         setBanks(updatedBanks);
     };
 
-    const handleLinkAccount = (e) => {
+    const handleLinkAccount = async (e) => {
         e.preventDefault();
         if (mobileNumber.length === 10) {
             setLinkingStatus('loading');
-            // Simulate API call
+          const response = await axios.post('http://localhost:8500/api/v1/aa/initiate-link', {
+              mobile: mobileNumber
+          });
+          console.log(response.data);
+          window.open(response.data.data.url, '_blank');
+
             setTimeout(() => {
                 setLinkingStatus('success');
                 // Reset form after success

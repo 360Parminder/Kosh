@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-@theme static {
+@theme inline {
+
+  --animate-fade-in: fadeIn 2s ease-out forwards;
   --color-primary: #000000;
   --color-secondary: #171717;
   --color-accent: #1c1c1c;
@@ -8,23 +10,19 @@
   --color-text-secondary: #b0b0b0;
   --color-border: #2e2e2e;
   --color-hover: #3c3c3c;
-
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 body{
   background-color: black;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-.fade-in {
-  animation: fadeIn 2s ease-out forwards;
-}

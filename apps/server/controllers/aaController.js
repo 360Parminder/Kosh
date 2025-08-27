@@ -126,7 +126,7 @@ exports.initiateLink = async (req, res) => {
         .status(response.status)
         .json({ message: "Failed to initiate link", error: response.data });
     }
-
+    // res.redirect(response.data.url);
     res.status(200).json({ message: "Link initiation successful", data: response.data });
   } catch (error) {
     console.log("Error initiating link:", error);

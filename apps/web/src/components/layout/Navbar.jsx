@@ -8,7 +8,7 @@ const Navbar = () => {
     
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            setIsScrolled(window.scrollY > 40);
         };
         
         // Set initial state
@@ -30,18 +30,18 @@ const Navbar = () => {
                     width: '100%'
                 }}
                 animate={{ 
-                    backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.1)' : 'rgb(0, 0, 0.1)',
-                    boxShadow: isScrolled ? '0 8px 16px -2px rgba(0, 0, 0, 0.3)' : 'none',
-                    backdropFilter: isScrolled ? 'blur(8px)' : 'none',
-                    borderRadius: isScrolled ? '0.75rem' : '0px',
-                    padding: isScrolled ? '0.75rem 2rem' : '1rem 2rem',
-                    margin: isScrolled ? '1rem auto' : '0 auto',
-                    width: isScrolled ? 'calc(100% - 2rem)' : '100%',
+                    // backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.1)' : 'rgb(0, 0, 0.1)',
+                    // boxShadow: isScrolled ? '0 8px 16px -2px rgba(0, 0, 0, 0.3)' : 'none',
+                    // backdropFilter: isScrolled ? 'blur(8px)' : 'none',
+                    // borderRadius: isScrolled ? '0.75rem' : '0px',
+                    // padding: isScrolled ? '0.75rem 2rem' : '1rem 2rem',
+                    // margin: isScrolled ? '1rem auto' : '0 auto',
+                    // width: isScrolled ? '80%' : '100%',
                 }}
                 transition={{ 
-                    duration: 0.3, 
-                    ease: "easeInOut",
-                    backgroundColor: { duration: 0.2 }
+                    duration: 0.5, 
+                    ease: "easeIn",
+                    backgroundColor: { duration: 0.5 }
                 }}
                 className={`mx-auto ${isScrolled ? 'max-w-7xl' : 'w-full'}`}
             >
