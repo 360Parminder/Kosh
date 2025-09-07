@@ -8,9 +8,9 @@ import Mastercard from '/src/assets/Mastercard.png';
 
 const HeroSection = () => {
   return (
-    <div className="min-h-screen  dark:bg-neutral-900 dark:text-white bg-neutral-200 text-black overflow-hidden flex flex-col">
+    <div className="min-h-screen max-w-screen  dark:text-white  text-black overflow-hidden flex flex-col">
       {/* Hero Section */}
-      <div className="flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 ">
+      <div className="flex-1 flex  flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 ">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ const HeroSection = () => {
       </div>
 
       {/* Cards Section */}
-      <div className="flex justify-center gap-1 sm:gap-2 pt-2.5 px-2 sm:px-4 pb-12 sm:pb-16 md:pb-24 -mt-10 sm:-mt-16 md:-mt-20 perspective-[1000px] mask-l-from-80% mask-r-from-80% overflow-x-auto">
+      <div className="flex justify-center gap-1 sm:gap-2 pt-2.5 px-2 sm:px-4 pb-12 sm:pb-16 md:pb-24 -mt-10 sm:-mt-16 md:-mt-20 perspective-[1000px] mask-l-from-80% mask-r-from-80% ">
         {/* Hidden cards on mobile, visible on larger screens */}
         <div
           className="hidden lg:block w-48 xl:w-72 h-48 xl:h-56 rounded-xl border dark:border-white/20 border-black/20 backdrop-blur-md flex-shrink-0"

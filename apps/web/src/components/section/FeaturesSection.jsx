@@ -49,7 +49,7 @@ const FeaturesSection = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
-      className="px-4 py-16 text-center mx-auto dark:text-white/90 text-black/90 dark:bg-black bg-gray-200 "
+    className="px-4 py-16 text-center mx-auto dark:text-white/90 text-black/90  shadow-[-0px_0px_0px_10px_rgba(226,226,226,0.05)]  rounded-t-3xl "
     >
       <h2 className="text-3xl font-bold mb-4">Everything You Need to Manage Subscriptions</h2>
       <p className="dark:text-white/70 text-black/70 text-lg mb-10 max-w-2xl mx-auto">

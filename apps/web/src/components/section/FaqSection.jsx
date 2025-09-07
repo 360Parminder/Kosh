@@ -38,7 +38,7 @@ const FaqSection = () => {
   };
 
   return (
-    <div className=" mx-auto px-4 py-20 dark:text-white/90 text-black/90 bg-gray-200 dark:bg-black">
+    <div className=" mx-auto px-4 py-20 dark:text-white/90 text-black/90">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

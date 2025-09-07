@@ -9,10 +9,10 @@ const DashboardLayout = () => {
     <div className="flex flex-row">
         {/* Sidebar component for the dashboard */}
        <SideBar />
-    <div className="flex-1 max-h-screen overflow-scroll dashboard-main p-2  dark:bg-[#171717] dark:text-white bg-white text-black">
+    <div className="flex-1 max-h-screen overflow-scroll dashboard-main p-2  dark:bg-[#171717] dark:text-white bg-neutral-200 text-black">
       {/* Header component for the dashboard */}
         <Header />
-      <main className="rounded-b-xl overflow-hidden dark:bg-black dark:text-white bg-white text-black ">
+      <main className="rounded-b-xl overflow-hidden dark:bg-black dark:text-white bg-neutral-300 text-black ">
         <Outlet />
       </main>
         </div>

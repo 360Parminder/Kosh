@@ -21,10 +21,9 @@ const Navbar = () => {
     const {user} = useAuth();
 
     return (
-        <div className="fixed top-0 left-0 right-0 z-50 dark:text-white text-black">
+        <div className="fixed top-2 left-0 right-0 z-50 dark:text-white text-black rounded-2xl flex justify-center">
             <motion.nav 
                 initial={{ 
-                    backgroundColor: 'rgb(0 0 0)',
                     padding: '1rem 2rem',
                     margin: '0 auto',
                     width: '100%'
@@ -43,7 +42,7 @@ const Navbar = () => {
                     ease: "easeIn",
                     backgroundColor: { duration: 0.5 }
                 }}
-                className={`mx-auto ${isScrolled ? 'max-w-7xl' : 'w-full'}`}
+                className="w-[60%] max-w-7xl rounded-2xl bg-white/20 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-black/20"
             >
                 <div className="flex justify-between items-center w-full">
                     {/* Left side - Feature, Price, Contact */}

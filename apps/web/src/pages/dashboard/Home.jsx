@@ -43,7 +43,7 @@ const Home = () => {
             {/* Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <motion.div 
-                    className=" bg-secondary p-4 rounded-lg transition-shadow shadow hover:shadow-md border border-border"
+                    className=" bg-neutral-300 dark:bg-secondary p-4 rounded-lg transition-shadow shadow hover:shadow-md border border-neutral-300 dark:border-border"
                     variants={cardVariants}
                     initial="hidden"
                     animate="visible"
@@ -61,7 +61,7 @@ const Home = () => {
                 </motion.div>
                 
                 <motion.div 
-                    className=" bg-secondary p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-border"
+                    className=" bg-neutral-300 dark:bg-secondary p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-neutral-300 dark:border-border"
                     variants={cardVariants}
                     initial="hidden"
                     animate="visible"
@@ -77,9 +77,9 @@ const Home = () => {
                         </div>
                     </div>
                 </motion.div>
-                
-                <motion.div 
-                    className=" bg-secondary p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-border"
+
+                <motion.div
+                    className=" bg-neutral-300 dark:bg-secondary p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-neutral-300 dark:border-border"
                     variants={cardVariants}
                     initial="hidden"
                     animate="visible"

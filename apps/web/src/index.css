@@ -25,4 +25,7 @@ body{
   background-color: black;
 }
 
-
+/* hide scroll bar */
+::-webkit-scrollbar {
+  display: none;
+}

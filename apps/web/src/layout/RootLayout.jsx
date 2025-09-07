@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const RootLayout = () => {
     return (
-        <div className=" dark:bg-black bg-gray-200 ">
+        <div className=" dark:bg-neutral-900 bg-neutral-200 min-h-screen dark:text-white/90 text-black/90 ">
             <Navbar />
             <main className="flex-1">
                 <Outlet />

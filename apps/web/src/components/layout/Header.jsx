@@ -15,10 +15,10 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-black shadow-md py-2 px-6 rounded-t-xl border-b-[2px] border-[#171717]">
+        <header className="  shadow-md py-2 px-6 rounded-t-xl border-b-[2px] border-neutral-300 dark:border-[#171717]">
             <div className="max-w-7xl mx-auto">
                 <motion.p 
-                    className="text-lg text-white"
+                    className="text-lg dark:text-white"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
