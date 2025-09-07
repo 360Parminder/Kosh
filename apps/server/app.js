@@ -55,22 +55,7 @@ app.use('/api/v1/payments', paymentRoutes);
 app.use('/api/v1/aa', accountAggregatorRoutes);
 
 
-app.get('/api/v1/test',async (req,res)=>{
-    try {
-        const response = await axios.post('http://localhost:8500/api/v1/aa/initiate-link',{
-            mobile:'8779112732'
-        },{
-            headers: {
-               Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTQzMTNkZDVlOGE2OWYxMmY0ZjU0YSIsImlhdCI6MTc1NjE0NjcxMywiZXhwIjoxNzU4NzM4NzEzfQ.fSgS4aCJ7Q1gFqOSBxfyW67VaUdSABB1sOKRg2a5ukE`
-            }
-        });
-        console.log(response.data);
-        res.status(200).json(response.data);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: 'Internal Server Error' });
-    }
-})
+
 
 // handle undefined Routes
 app.use('*', (req, res, next) => {

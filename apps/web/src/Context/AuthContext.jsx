@@ -1,11 +1,14 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import authService from '../service/authService';
+import { useToast } from '../hooks/useToast';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { addToast } = useToast();
 
   // Initialize auth state (e.g., check localStorage or session)
   useEffect(() => {
@@ -15,7 +18,7 @@ export const AuthProvider = ({ children }) => {
         // You might want to validate the token with your backend here
         const userData = JSON.parse(localStorage.getItem('user'));
         setUser(userData);
-        
+
       }
       setLoading(false);
     };
@@ -27,19 +30,34 @@ export const AuthProvider = ({ children }) => {
     try {
       // Replace with your actual login API call
       const response = await axios.post('http://localhost:8500/api/v1/users/login', { email, password });
-        console.log('Login response:', response);
-        
       if (response.status !== 200) {
-        return { success: false, error: response.message || 'Login failed'};
+        return { success: false, error: response.message || 'Login failed' };
       }
-
       const data = response.data;
       setUser(data.data.user);
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.data.user));
       return { success: true };
     } catch (error) {
-      return { success: false, error: error.response?.data?.message || 'Login failed'};
+      return { success: false, error: error.response?.data?.message || 'Login failed' };
+    }
+  };
+  const signup = async (userData) => {
+    try {
+      const response = await authService.register(userData);
+      if (response.status !== 201) {
+        addToast('Registration successful!', {
+          type: 'success',
+          duration: 5000,
+          position: 'top-center'
+        });
+      }
+    } catch (error) {
+      addToast(error.response?.data?.message || 'Signup failed', {
+        type: 'error',
+        duration: 5000,
+        position: 'top-center'
+      });
     }
   };
 
@@ -54,6 +72,7 @@ export const AuthProvider = ({ children }) => {
     loading,
     login,
     logout,
+    signup,
     isAuthenticated: !!user,
   };
 

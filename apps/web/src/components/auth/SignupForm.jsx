@@ -1,20 +1,27 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { User, Mail, Lock, Phone, Upload, X } from 'lucide-react';
+import { User, Mail, Lock, Phone, Upload, X, Calendar } from 'lucide-react';
+import { useAuth } from '../../Context/AuthContext';
+
 
 const SignupForm = () => {
+  const { signup } = useAuth();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     password: '',
+    confirmPassword: '',
     mobile: '',
-    avatar: null
+    avatar: null,
+    dateOfBirth: '',
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState(null);
   const fileInputRef = useRef(null);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -75,6 +82,16 @@ const SignupForm = () => {
       }));
     }
   };
+  const handleComfirmPasswordCheck = () => {
+    if (formData.password !== formData.confirmPassword) {
+      setErrors(prev => ({
+        ...prev,
+        confirmPassword: 'Passwords do not match'
+      }));
+      return false;
+    }
+    return true;
+  };
 
   const removeAvatar = () => {
     setFormData(prev => ({
@@ -89,61 +106,60 @@ const SignupForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.firstName.trim()) {
       newErrors.firstName = 'First name is required';
     }
-    
+
     if (!formData.lastName.trim()) {
       newErrors.lastName = 'Last name is required';
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email';
     }
-    
+
     if (!formData.password) {
       newErrors.password = 'Password is required';
     } else if (formData.password.length < 8) {
       newErrors.password = 'Password must be at least 8 characters';
     }
-    
+
     if (!formData.mobile.trim()) {
       newErrors.mobile = 'Mobile number is required';
     } else if (!/^[0-9]{10,15}$/.test(formData.mobile)) {
       newErrors.mobile = 'Please enter a valid mobile number';
     }
-    
+
     if (!formData.avatar) {
       newErrors.avatar = 'Profile picture is required';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsLoading(true);
-    
+
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Here you would typically send the data to your backend
-      console.log('Form submitted:', formData);
-      
+
+
       // Reset form after successful submission
       setFormData({
         firstName: '',
         lastName: '',
         email: '',
         password: '',
+        confirmPassword: '',
         mobile: '',
         avatar: null
       });
@@ -151,9 +167,7 @@ const SignupForm = () => {
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
       }
-      
-      // Show success message or redirect
-      alert('Account created successfully!');
+      await signup(formData);
     } catch (error) {
       console.error('Signup error:', error);
       setErrors({
@@ -163,15 +177,14 @@ const SignupForm = () => {
       setIsLoading(false);
     }
   };
-  console.log(formData);
-  
-  
+
+
 
   return (
     <div className="bg-black text-white min-h-screen overflow-hidden relative">
       {/* Back to Home Button */}
       <div className="absolute top-6 left-6 z-50">
-        <button 
+        <button
           className="flex items-center gap-2 text-indigo-300 hover:text-indigo-100 transition-colors"
           onClick={() => window.history.back()}
         >
@@ -182,35 +195,20 @@ const SignupForm = () => {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-24 flex items-center justify-center">
-        <motion.div 
+        <motion.div
           className="w-full max-w-md"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Logo/Header */}
-          {/* <div className="text-center mb-10">
-            <motion.div
-              className="mx-auto w-20 h-20 rounded-full bg-indigo-900/50 flex items-center justify-center mb-4 border border-indigo-700/50"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <User size={32} className="text-indigo-400" />
-            </motion.div>
-            <h1 className="text-3xl font-bold tracking-wide text-indigo-300 mb-2">CREATE ACCOUNT</h1>
-            <p className="text-gray-400">Join Kosh to manage your subscriptions</p>
-          </div> */}
-
-          {/* Signup Form */}
-          <motion.div 
+          <motion.div
             className="bg-gray-900/70 backdrop-blur-sm p-8 rounded-xl border border-gray-700/50 shadow-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
             {errors.server && (
-              <motion.div 
+              <motion.div
                 className="bg-red-900/50 text-red-300 p-3 rounded-lg mb-4 text-sm"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -305,7 +303,26 @@ const SignupForm = () => {
                 </div>
                 {errors.password && <p className="mt-1 text-sm text-red-400">{errors.password}</p>}
               </div>
-
+              <div className="mb-4">
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-300 mb-1">
+                  Confirm Password
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Lock size={16} className="text-gray-500" />
+                  </div>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    className="w-full pl-10 pr-4 py-2 bg-gray-800/70 border border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-500 transition-all"
+                    placeholder="••••••••"
+                  />
+                </div>
+                {errors.confirmPassword && <p className="mt-1 text-sm text-red-400">{errors.confirmPassword}</p>}
+              </div>
               <div className="mb-4">
                 <label htmlFor="mobile" className="block text-sm font-medium text-gray-300 mb-1">
                   Mobile Number
@@ -326,19 +343,39 @@ const SignupForm = () => {
                 </div>
                 {errors.mobile && <p className="mt-1 text-sm text-red-400">{errors.mobile}</p>}
               </div>
+              <div className="mb-4">
+                <label htmlFor="dateOfBirth" className="block text-sm font-medium text-gray-300 mb-1">
+                  Date of Birth
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Calendar size={16} className="text-gray-500" />
+                  </div>
+                  <input
+                    type="date"
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    value={formData.dateOfBirth}
+                    onChange={handleChange}
+                    className="w-full pl-10 pr-4 py-2 bg-gray-800/70 border border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white placeholder-gray-500 transition-all"
+                    placeholder="YYYY-MM-DD"
+                  />
+                </div>
+                {errors.dateOfBirth && <p className="mt-1 text-sm text-red-400">{errors.dateOfBirth}</p>}
+              </div>
 
               <div className="mb-6">
                 <label htmlFor="avatar" className="block text-sm font-medium text-gray-300 mb-2">
                   Profile Picture
                 </label>
-                
+
                 <div className="flex items-center gap-4">
                   <div className="relative">
                     {preview ? (
                       <div className="relative group">
-                        <img 
-                          src={preview} 
-                          alt="Preview" 
+                        <img
+                          src={preview}
+                          alt="Preview"
                           className="w-16 h-16 rounded-full object-cover border-2 border-indigo-500"
                         />
                         <button
@@ -357,7 +394,7 @@ const SignupForm = () => {
                   </div>
 
                   <div className="flex-1">
-                    <label 
+                    <label
                       htmlFor="avatar-upload"
                       className="flex items-center justify-center px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg cursor-pointer hover:bg-gray-800 transition-colors"
                     >

@@ -15,7 +15,7 @@ const Header = () => {
     };
 
     return (
-        <header className="  shadow-md py-2 px-6 rounded-t-xl border-b-[2px] border-neutral-300 dark:border-[#171717]">
+        <header className="  shadow-md py-2 px-6 rounded-t-xl border-b-[2px] dark:bg-black dark:text-white bg-neutral-300 text-black  border-neutral-200 dark:border-[#171717]">
             <div className="max-w-7xl mx-auto">
                 <motion.p 
                     className="text-lg dark:text-white"

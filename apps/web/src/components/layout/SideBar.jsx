@@ -29,11 +29,12 @@ const SideBar = () => {
                 { name: 'Reports', icon: <FileText size={20} />, path: '/reports' },
                 { name: 'Payments', icon: <CreditCard size={20} />, path: '/payments' },
                 { name: 'Subscriptions', icon: <Box size={20} />, path: '/subscriptions' },
-                { name: 'Bank Accounts', icon: <Box size={20} />, path: 'bankaccounts' }
+                { name: 'Bank Accounts', icon: <Box size={20} />, path: 'bankaccounts' },
+                // {name: 'profile', icon: <Box size={20} />, path: 'profile' }
         ];
 
         return (
-                <div className="flex flex-col h-screen bg-white  dark:bg-[#171717] dark:text-white w-64">
+                <div className="flex flex-col h-screen  dark:bg-[#171717] dark:text-white bg-neutral-200 text-black w-64">
                         {/* App Logo */}
                               <button className="p-4 flex flex-row items-center gap-3" onClick={() => window.location.href = '/'}>
                                   <img 
@@ -81,7 +82,7 @@ const SideBar = () => {
                         {/* User Profile */}
                         <div className="mt-auto p-4 ">
                                 <div className="flex items-center justify-between">
-                                        <div className="flex items-center">
+                                        <Link to='profile' className="flex items-center">
                                                 <img
                                                         src={currentUser.avatar}
                                                         alt="User avatar"
@@ -91,7 +92,7 @@ const SideBar = () => {
                                                         <p className="font-medium capitalize ">{currentUser.firstname} {currentUser.lastname}</p>
                                                         <p className="text-sm ">{currentUser.email}</p>
                                                 </div>
-                                        </div>
+                                        </Link>
                                         <button className=" hover:text-gray-700">
                                                 <MoreVertical size={18} />
                                         </button>

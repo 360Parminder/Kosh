@@ -13,11 +13,11 @@ const userSchema = new mongoose.Schema({
       message: "Please provide a valid URL for the avatar",
     },
   },
-  firstname: {
+  firstName: {
     type: String,
     required: [true, "Please fill your firstname"],
   },
-  lastname: {
+  lastName: {
     type: String,
     required: [true, "Please fill your lastname"],
   },
@@ -33,14 +33,14 @@ const userSchema = new mongoose.Schema({
     default: false,
     select: false, // Don't return this field by default
   },
-  phone: {
+  mobile: {
     type: String,
-    required: [true, "Please fill your phone number"],
+    required: [true, "Please fill your mobile number"],
     validate: {
       validator: function(el) {
         return validator.isMobilePhone(el, "any", { strictMode: false });
       },
-      message: "Please provide a valid phone number",
+      message: "Please provide a valid mobile number",
     },
   },
   dateOfBirth: {

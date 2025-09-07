@@ -62,8 +62,10 @@ exports.login = async (req, res, next) => {
 };
 
 exports.signup = async (req, res, next) => {
+  console.log('req.file', req.body, req.file);
+  
   try {
-    const requiredFields = ["firstname", "lastname", "email", "password", "passwordConfirm", "phone", "dateOfBirth"];
+    const requiredFields = ["firstName", "lastName", "email", "password", "confirmPassword", "mobile", "dateOfBirth"];
     for (const field of requiredFields) {
       if (!req.body[field]) {
         return res.status(400).json({
@@ -83,14 +85,14 @@ exports.signup = async (req, res, next) => {
     
     const user = await User.create({
       avatar: avatar,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
-      phone: req.body.phone,
+      mobile: req.body.mobile,
       dateOfBirth: req.body.dateOfBirth,
       address: req.body.address,
       password: req.body.password,
-      passwordConfirm: req.body.passwordConfirm,
+      passwordConfirm: req.body.confirmPassword,
       role: req.body.role,
     });
 

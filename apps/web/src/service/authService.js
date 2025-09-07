@@ -22,7 +22,7 @@ const authService = {
 
   register: async (userData) => {
     try {
-      const response = await apiClient.post('/auth/register', userData);
+      const response = await apiClient.post('/users/signup', userData);
       return response.data;
     } catch (error) {
       console.error('Registration error:', error);

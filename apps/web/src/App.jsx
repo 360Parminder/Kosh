@@ -13,6 +13,7 @@ import Home from "./pages/dashboard/Home";
 import BankAccounts from "./pages/dashboard/BankAccounts";
 import Transactions from "./pages/dashboard/transactions";
 import { useAuth } from "./Context/AuthContext";
+import Profile from "./pages/dashboard/Profile";
 
 const App = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const App = () => {
             <Route path="bankaccounts" element={<BankAccounts />} />
             <Route path="transactions" element={<Transactions />} />
             {/* <Route path="settings" element={<DashboardSettings />} /> */}
-            {/* <Route path="profile" element={<DashboardProfile />} /> */}
+            <Route path="profile" element={<Profile />} />
         </Route>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignupForm />} />
