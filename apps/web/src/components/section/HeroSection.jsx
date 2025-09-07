@@ -8,7 +8,7 @@ import Mastercard from '/src/assets/Mastercard.png';
 
 const HeroSection = () => {
   return (
-    <div className="min-h-screen max-w-screen  dark:text-white  text-black overflow-hidden flex flex-col">
+    <div className="min-h-[96vh] max-w-screen  dark:text-white  text-black overflow-hidden flex flex-col">
       {/* Hero Section */}
       <div className="flex-1 flex  flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 ">
         <motion.h1
@@ -24,7 +24,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="text-base sm:text-lg md:text-xl mt-4 z-10 max-w-sm sm:max-w-md md:max-w-xl px-2"
+          className="text-base sm:text-lg md:text-xl mt-2 z-10 max-w-sm sm:max-w-md md:max-w-xl px-2"
         >
           Manage bills, get smart reminders, and track spending effortlessly with Kosh.
         </motion.p>
@@ -33,7 +33,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center gap-4 mt-6 sm:mt-8 z-10"
+          className="flex flex-col sm:flex-row items-center gap-4 mt-4 sm:mt-6 z-10"
         >
           <Link to="/signup" className="flex items-center w-full sm:w-auto">
             <button className="bg-indigo-600 hover:bg-indigo-500 transition-colors px-6 py-3 rounded-lg text-white/80 font-semibold w-full sm:w-auto">

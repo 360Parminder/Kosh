@@ -26,7 +26,7 @@ const features = [
 
 const FeaturePage = () => {
   return (
-    <div className="min-h-screen px-4 py-24  overflow-hidden">
+    <div className="min-h-screen px-4   overflow-hidden">
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}

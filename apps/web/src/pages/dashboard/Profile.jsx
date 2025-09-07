@@ -38,8 +38,8 @@ const Profile = () => {
                 alt="Profile"
                 className="w-32 h-32 rounded-full object-cover border-4 border-neutral-800 dark:border-neutral-200 shadow-lg"
               />
-              <div className="absolute bottom-0 right-0 bg-blue-500 rounded-full p-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="absolute bottom-0 right-0 bg-indigo-600 rounded-full p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white " fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
@@ -64,7 +64,7 @@ const Profile = () => {
             {/* Personal Information */}
             <div className="bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg">
               <h3 className="text-lg font-medium  mb-4 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
                 Personal Information
@@ -73,12 +73,12 @@ const Profile = () => {
               <div className="space-y-3">
                 <div>
                   <p className="text-sm dark:text-neutral-200">First Name</p>
-                  <p className="font-medium">{user.firstName}</p>
+                  <p className="font-medium capitalize">{user.firstName}</p>
                 </div>
                 
                 <div>
                   <p className="text-sm dark:text-neutral-200">Last Name</p>
-                  <p className="font-medium">{user.lastName}</p>
+                  <p className="font-medium capitalize">{user.lastName}</p>
                 </div>
                 
                 <div>
@@ -91,7 +91,7 @@ const Profile = () => {
             {/* Contact Information */}
             <div className="bg-neutral-100 dark:bg-neutral-800 p-6 rounded-lg">
               <h3 className="text-lg font-medium  mb-4 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 Contact Information
@@ -125,12 +125,12 @@ const Profile = () => {
           
           {/* Action Buttons */}
           <div className="flex justify-end mt-8 space-x-4">
-            <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button className="px-4 py-2  rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
               Edit Profile
             </button>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            {/* <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
               Save Changes
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

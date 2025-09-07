@@ -14,6 +14,7 @@ import BankAccounts from "./pages/dashboard/BankAccounts";
 import Transactions from "./pages/dashboard/transactions";
 import { useAuth } from "./Context/AuthContext";
 import Profile from "./pages/dashboard/Profile";
+import Help from "./pages/policies/Help";
 
 const App = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="features" element={<FeaturePage />} />
           <Route path="contact" element={<Contact />} />
           <Route path="about" element={<About />} />
+        <Route path="/help" element={<Help />} />
         </Route>
 
         <Route path="dashboard" element={<DashboardLayout />}>

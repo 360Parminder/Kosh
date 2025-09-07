@@ -51,7 +51,7 @@ const SideBar = () => {
                                                 <li key={index}>
                                                         <Link 
                                                                 to={tab.path}
-                                                                className="flex items-center px-6 py-3 mx-2 my-1 rounded-lg text-gray-700 hover:text-white transition-colors duration-200 dark:text-gray-300 dark:hover:bg-hover dark:hover:text-white"
+                                                                className="flex items-center px-6 py-3 mx-2 my-1 rounded-lg transition-colors duration-200 text-gray-700 hover:text-indigo-600 hover:bg-neutral-300 dark:text-gray-300 dark:hover:bg-hover"
                                                         >
                                                                 <span className="mr-3">{tab.icon}</span>
                                                                 <span>{tab.name}</span>
@@ -82,15 +82,15 @@ const SideBar = () => {
                         {/* User Profile */}
                         <div className="mt-auto p-4 ">
                                 <div className="flex items-center justify-between">
-                                        <Link to='profile' className="flex items-center">
+                                        <Link to='profile' className="flex items-center overflow-clip">
                                                 <img
                                                         src={currentUser.avatar}
                                                         alt="User avatar"
                                                         className="w-10 h-10 rounded-full mr-3"
                                                 />
-                                                <div>
-                                                        <p className="font-medium capitalize ">{currentUser.firstname} {currentUser.lastname}</p>
-                                                        <p className="text-sm ">{currentUser.email}</p>
+                                                <div className='flex flex-col leading-tight'>
+                                                        <p className="font-medium capitalize ">{currentUser.firstName} {currentUser.lastName}</p>
+                                                        <p className="text-sm overflow-clip">{currentUser.email}</p>
                                                 </div>
                                         </Link>
                                         <button className=" hover:text-gray-700">
